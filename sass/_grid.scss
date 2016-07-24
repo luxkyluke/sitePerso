@@ -1,0 +1,113 @@
+$cols: 12;
+$gutter: 15px;
+$width: 1200px;
+$widthLarge: 1320px;
+
+
+// Variables go here
+@mixin mobile-portrait {
+    @media (max-width: 700px) {
+        @content;
+    }
+}
+
+%clearfix {
+    &:before,
+    &:after {
+        content: " ";
+        display: table;
+        width: 100%;
+    }
+
+    &:after {
+        clear: both;
+    }
+}
+
+.grid {
+    @extend %clearfix;
+    max-width: $width;
+    margin: 0 auto;
+    padding: 0 30px;
+    // box-sizing: content-box;
+
+    @include mobile-portrait {
+        max-width: 100%;
+        padding: 0 20px;
+    }
+
+    &--large {
+        width: $widthLarge;
+    }
+}
+
+.row {
+    margin-left: -$gutter;
+    margin-right: -$gutter;
+    &:after {
+        @extend %clearfix;
+    }
+}
+
+
+[class*="cell-"] {
+    min-height: 1px;
+    float: left;
+    padding-left: $gutter;
+    padding-right: $gutter;
+    // box-sizing: content-box;
+}
+
+@for $i from 1 through $cols {
+    .cell-#{$i} {
+        width: (100% / $cols) * $i;
+
+        @include mobile-portrait {
+            width: 100%;
+        }
+    }
+}
+
+@for $i from 1 through $cols {
+    .prepend-#{$i} {
+        margin-left: (100% / $cols) * $i;
+
+        @include mobile-portrait {
+            margin-left: 0;
+        }
+    }
+}
+
+@for $i from 1 through $cols {
+    .append-#{$i} {
+        margin-right: (100% / $cols) * $i;
+    }
+}
+
+.dev-grid {
+    display: block;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 9;
+    pointer-events: none;
+
+    &.is-visible {
+        display: block;
+    }
+
+    .grid,
+    .row {
+        height: 100%;
+    }
+
+    [class*="cell-"] {
+        height: 100%;
+    }
+
+    .cell-content {
+        display: block;
+        width: 100%;
+        background-color: rgba(142,239,186,0.2);
+    }
+}
