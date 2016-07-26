@@ -1,7 +1,8 @@
 class MenuHandler {
     constructor() {
         this.menuTrigger = $('#menu-trigger');
-
+        this.menu = $('#menu');
+        this.menuTransition = $('#menu-transition');
         this.toggleMenu();
     }
 
@@ -9,6 +10,8 @@ class MenuHandler {
         this.menuTrigger.on('click', ()=> {
             this.menuTrigger.toggleClass('is-open');
             this.menu.toggleClass('is-open');
+            this.menuTransition.toggleClass('is-open');
+            return false;
         });
     }
 }
