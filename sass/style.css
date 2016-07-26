@@ -225,6 +225,76 @@
     width: 100%;
     background-color: rgba(142, 239, 186, 0.2); }
 
+.menu {
+  position: absolute;
+  top: 7%;
+  left: 95%;
+  transform: translate(-50%, -50%); }
+
+.menu__btn {
+  position: relative;
+  display: block;
+  height: 40px;
+  width: 40px;
+  position: absolute;
+  border: 3px solid white;
+  border-radius: 0;
+  transition: border-radius 300ms ease; }
+  .menu__btn:hover {
+    border-radius: 50%; }
+  .menu__btn.is-open {
+    width: 1000px;
+    height: 1000px;
+    -webkit-transition: 500ms ease; }
+    .menu__btn.is-open .menu__burger {
+      opacity: 0;
+      transform: translateX(45px); }
+    .menu__btn.is-open .menu__exit {
+      opacity: 1;
+      transform: translateX(0); }
+
+.menu__burger,
+.menu__burger:before,
+.menu__burger:after {
+  display: block;
+  content: '';
+  width: 18px;
+  height: 3px;
+  background-color: white;
+  position: absolute; }
+
+.menu__burger {
+  left: 12px;
+  top: 18px;
+  transform: translateX(0);
+  opacity: 1;
+  transition: opacity 300ms ease, transform 300ms ease; }
+  .menu__burger:before {
+    top: -8px; }
+  .menu__burger:after {
+    top: 8px; }
+
+.menu__exit:before,
+.menu__exit:after {
+  display: block;
+  content: '';
+  width: 22px;
+  height: 3px;
+  background-color: white;
+  position: absolute; }
+
+.menu__exit {
+  position: absolute;
+  top: 18px;
+  left: 10px;
+  transform: translateX(-45px);
+  opacity: 0;
+  transition: opacity 300ms ease, transform 300ms ease; }
+  .menu__exit:before {
+    transform: rotate(45deg); }
+  .menu__exit:after {
+    transform: rotate(-45deg); }
+
 @font-face {
   font-family: Engravers;
   src: url(../fonts/ENGR.ttf); }
@@ -242,42 +312,54 @@ a {
   text-decoration: none;
   color: #000; }
 
-.project_img img {
-  height: 550px; }
+.project_img {
+  z-index: 5;
+  position: relative; }
+  .project_img img {
+    height: 550px; }
 
 .project_desc {
-  margin-left: 43.7%;
+  margin-left: 61.7%;
   background-color: #fff;
   width: 300px;
   height: 300px;
-  margin-top: -215px;
+  margin-top: -300px;
   padding: 40px 40px;
   display: block;
-  position: absolute;
+  z-index: 5;
+  position: relative;
   bottom: -80px;
   font-family: Monsterra-r; }
   .project_desc h2 {
     text-align: center;
-    font-size: 2.25em; }
+    font-size: 2.25em;
+    margin-bottom: 1.2em; }
+  .project_desc .button {
+    height: 70px;
+    float: right;
+    margin-right: -25px; }
 
 .conteneur_project {
   padding: 83px 0 100px;
-  position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   height: 560px;
   margin: auto; }
+  .conteneur_project .row {
+    margin-bottom: 150px; }
 
 .project_desc_title {
   font-family: Engravers;
   color: #888; }
 
 ul.icons_technos {
-  text-decoration: none; }
+  text-decoration: none;
+  margin-top: 2em; }
   ul.icons_technos li {
-    display: block; }
+    display: inline-block;
+    padding-right: 15px; }
     ul.icons_technos li img {
       height: 50px;
       width: 50px; }
